@@ -143,4 +143,4 @@ async def handler(job):
     else:
         return await submit_output()
 
-runpod.serverless.start({"handler": handler, "concurrency_controller": concurrency_controller})
+runpod.serverless.start({"handler": handler, "concurrency_controller": concurrency_controller, "return_aggregate_stream": True})
