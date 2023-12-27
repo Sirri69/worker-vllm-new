@@ -1,4 +1,4 @@
-FROM shadowaryan/llama2-13b:v1
+FROM shadowaryan/llama2_13b:v1
 
 ARG HUGGING_FACE_HUB_TOKEN=""
 ARG MODEL_NAME=""
