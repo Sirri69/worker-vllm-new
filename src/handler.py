@@ -117,14 +117,14 @@ async def handler(job):
     results_generator = llm.generate(prompt, sampling_params, request_id)
 
     # Enable HTTP Streaming
-    async def stream_output():
-        # Streaming case
-        previous_texts = ""
-        async for request_output in results_generator:
-            for output in request_output.outputs:
-                delta_text = output.text[len(previous_texts):]
-                previous_texts = output.text
-                yield {"text": delta_text}
+    # async def stream_output():
+    #     # Streaming case
+    #     previous_texts = ""
+    #     async for request_output in results_generator:
+    #         for output in request_output.outputs:
+    #             delta_text = output.text[len(previous_texts):]
+    #             previous_texts = output.text
+    #             yield {"text": delta_text}
 
     # Regular submission
     async def submit_output():
@@ -139,8 +139,15 @@ async def handler(job):
         return ret
 
     if streaming:
-        return stream_output()
+        # return stream_output()
+        previous_texts = ""
+        async for request_output in results_generator:
+            for output in request_output.outputs:
+                delta_text = output.text[len(previous_texts):]
+                previous_texts = output.text
+                yield {"text": delta_text}
     else:
-        return await submit_output()
+        resp = await submit_output()
+        yield resp
 
 runpod.serverless.start({"handler": handler, "concurrency_controller": concurrency_controller, "return_aggregate_stream": True})
