@@ -1,4 +1,4 @@
-FROM ehartford/runpod-worker-vllm:latest
+FROM shadowaryan/llama2-13b:v1
 
 ARG HUGGING_FACE_HUB_TOKEN=""
 ARG MODEL_NAME=""
