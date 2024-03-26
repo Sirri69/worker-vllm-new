@@ -18,7 +18,7 @@ engine_args = AsyncEngineArgs(
     model=f"{MODEL_BASE_PATH}{MODEL_NAME.split('/')[1]}",
     tokenizer_mode="slow",
     tensor_parallel_size=RUNPOD_GPU_COUNT,
-    dtype="float16",
+    dtype="auto",
     seed=0,
     worker_use_ray=False,
 )
