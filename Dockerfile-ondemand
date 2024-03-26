@@ -1,4 +1,4 @@
-FROM ehartford/runpod-worker-vllm:latest
+FROM pranav2278/mistral-7b-pro:v1
 
 ARG MODEL_NAME=""
 ENV MODEL_NAME=${MODEL_NAME}
