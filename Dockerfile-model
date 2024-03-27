@@ -1,4 +1,4 @@
-FROM pranav2278/mistral-7b-pro:v1
+FROM pranav2278/llama-2-70b:v1
 
 ARG HUGGING_FACE_HUB_TOKEN=""
 ARG MODEL_NAME=""
