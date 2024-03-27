@@ -15,8 +15,8 @@ RUNPOD_GPU_COUNT = int(os.environ.get('RUNPOD_GPU_COUNT', '1'))
 
 # Prepare the engine's arguments
 engine_args = AsyncEngineArgs(
-    model=f"{MODEL_BASE_PATH}{MODEL_NAME.split('/')[1]}",
-    tokenizer_mode="fast",
+    model=f".{MODEL_BASE_PATH}{MODEL_NAME.split('/')[1]}",
+    tokenizer_mode="auto",
     tensor_parallel_size=RUNPOD_GPU_COUNT,
     dtype="auto",
     seed=0,
